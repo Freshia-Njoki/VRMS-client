@@ -9,6 +9,9 @@ import NotFound from './pages/NotFound.tsx';
 import Contact from './components/adminDashboard/Contact.tsx';
 import About from './pages/About.tsx';
 import Login from './components/auth/Login.tsx';
+import Dashboard from './pages/Dashboard.tsx';
+import AccountSettings from './components/customerDashboard/AccountSettings.tsx';
+import CurrentBookings from './components/customerDashboard/CurrentBookings.tsx';
 
 const router = createBrowserRouter([
   {
@@ -36,7 +39,21 @@ const router = createBrowserRouter([
     element: <About />,
     errorElement:<NotFound/>,
   },
- 
+  {
+    path: 'dashboard',
+    element: <Dashboard />,
+    errorElement:<NotFound />
+  },
+  {
+    path: 'account-settings',
+    element: <AccountSettings/>,
+    errorElement:<NotFound />
+  },
+  {
+    path: 'current-bookings',
+    element: <CurrentBookings/>,
+    errorElement:<NotFound />
+  }
   // {
   //   path: 'dashboard',
   //   element: <Dashboard />,
