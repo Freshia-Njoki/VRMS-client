@@ -42,6 +42,7 @@ const Navbar: React.FC = () => {
         </div>
       </div>
     </nav>
+  
   );
 };
 

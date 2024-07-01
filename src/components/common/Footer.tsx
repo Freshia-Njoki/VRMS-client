@@ -13,7 +13,7 @@ const Footer: React.FC = () => {
         <div className="flex space-x-4 mt-4">
           <a href="https://www.linkedin.com/in/freshia-njoki/" target="_blank" rel="noopener noreferrer"><FaLinkedin className="text-neutral-content text-2xl" /></a>
           {/* <a href="https://youtube.com" target="_blank" rel="noopener noreferrer"><FaYoutube className="text-black text-2xl" /></a> */}
-          <a href="https://x.com/FreshiaNjoki2" target="_blank" rel="noopener noreferrer"><FaFacebookF className="text-neutral-content text-2xl" /></a>
+          <a href="https://x.com/FreshiaNjoki2" target="_blank" rel="noopener noreferrer"><FaTwitter className="text-neutral-content text-2xl" /></a>
         </div>
       </div>
     </footer>
