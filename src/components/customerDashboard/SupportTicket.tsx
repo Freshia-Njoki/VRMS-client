@@ -38,7 +38,7 @@ const SupportTicket = () => {
           <span className="mr-2">📅</span>
           <span className="font-bold">Dec 24</span>
           <h4 className='px-4'>to</h4>
-          <span className="ml-">📅</span>
+          <span>📅</span>
           <span className="font-bold px-3"> Dec 31</span>
         </div>
       </div>
