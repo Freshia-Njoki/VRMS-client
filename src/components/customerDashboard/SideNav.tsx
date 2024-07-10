@@ -1,44 +1,46 @@
-import { SquareUserRound, BookHeart, Menu, LogOut, House } from "lucide-react";
+import { Ticket, Car, History, BadgePlus, BookCheckIcon } from "lucide-react";
 import { Link } from "react-router-dom";
 
-function SideNav() {
+function SideNav({onSelect}:any) {
+  const handleItemClick = (item:string) => {
+    onSelect(item);
+  };
+
 
   return (
     <ul className="menu bg-gray-800 min-w-full gap-2 text-base-content min-h-full text-white p-4">
+      <h3>Dashboard</h3>
       <li>
         <div className="flex items-center gap-2">
-          <Menu />
-          <span className="font-bold text-lg cursor-pointer py-5"> <Link to="/dashboard">Dashboard</Link></span>
+          <Ticket />
+          <span className="font-bold text-lg cursor-pointer py-5" onClick={() => handleItemClick('support-ticket')}>Support Ticket</span>
         </div>
       </li>
       <li>
-        <details className="flex flex-col">
-          <summary className="flex items-center gap-2 font-bold text-lg cursor-pointer  py-5"> <BookHeart /> Bookings </summary>
-          <ul className="pl-6 pt-2">
-                        <li><Link to="/current-bookings"  className="flex items-center gap-2 py-5 cursor-pointer">CurrentBookings</Link></li>
-                        <li><Link to="/booking-history"  className="flex items-center gap-2 py-5 cursor-pointer">BookingHistory</Link></li>
-                    </ul>
-
-        </details>
+        <div className="flex items-center gap-2">
+        <Car />
+          <span className="flex items-center gap-2 font-bold text-lg cursor-pointer  py-5" onClick={() => handleItemClick('current-bookings')}>Current Bookings </span>
+        </div>
       </li>
       
       <li>
-        <Link to="account-settings"  className="flex gap-2 items-center cursor-pointer py-5">
-          <SquareUserRound />
-          <span className="font-bold text-lg  ">Settings</span>
-        </Link>
+        <div className="flex gap-2 items-center cursor-pointer py-5">
+          <History />
+          <span className="font-bold text-lg"  onClick={() => handleItemClick('booking-history')}>Booking History</span>
+        </div>
+      </li>
+      <h6>Support</h6>
+      <li>
+        <div className="flex items-center gap-2 cursor-pointer font-bold py-5 text-lg"  onClick={() => handleItemClick('my-tickets')}>
+        <BookCheckIcon />
+          My Tickets
+        </div>
       </li>
       <li>
-        <Link to="/" className="flex items-center gap-2 cursor-pointer font-bold py-5 text-lg">
-        <House />
-          Home
-        </Link>
-      </li>
-      <li>
-        <Link to="#" className="flex items-center py-5 gap-2">
-          <LogOut />
-          <span className="font-bold text-lg">Logout</span>
-        </Link>
+        <div className="flex items-center py-5 gap-2">
+          <BadgePlus />
+          <span className="font-bold text-lg"  onClick={() => handleItemClick('new-tickets')}>New Tickets</span>
+        </div>
       </li>
     </ul>
   );

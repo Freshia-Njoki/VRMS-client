@@ -13,6 +13,10 @@ import Dashboard from './pages/Dashboard.tsx';
 import Login from './components/auth/Login.tsx';
 import AccountSettings from './components/customerDashboard/AccountSettings.tsx';
 import CurrentBookings from './components/customerDashboard/CurrentBookings.tsx';
+import SupportTicket from './components/customerDashboard/SupportTicket.tsx';
+import BookingHistory from './components/customerDashboard/BookingHistory.tsx';
+import MyTickets from './components/customerDashboard/MyTickets.tsx';
+import NewTickets from './components/customerDashboard/NewTickets.tsx';
 
 const router = createBrowserRouter([
   {
@@ -43,23 +47,33 @@ const router = createBrowserRouter([
   {
     path: 'dashboard',
     element: <Dashboard />,
+    errorElement:<NotFound/>,
+  },
+  {
+    path: 'support-ticket',
+    element: <SupportTicket />,
+    errorElement:<NotFound />
+  },
+  {
+    path: 'current-bookings',
+    element: <CurrentBookings />,
+    errorElement:<NotFound />
+  },
+  {
+    path: 'booking-history',
+    element: <BookingHistory />,
+    errorElement:<NotFound />
+  },
+  {
+    path: 'my-tickets',
+    element: <MyTickets />,
+    errorElement:<NotFound />
+  },
+  {
+    path: 'new-tickets',
+    element: <NewTickets />,
     errorElement:<NotFound />
   }
-  // {
-  //   path: 'dashboard',
-  //   element: <Dashboard />,
-  //   errorElement:<NotFound/>,
-  //   children: [
-  //     {
-  //       path: "users",
-  //       element: <Users />,
-  //     },
-  //     {
-  //       path: "user-profiles",
-  //       element: <UserProfiles />,
-  //     }
-  //   ]
-  // },
 
 ])
 

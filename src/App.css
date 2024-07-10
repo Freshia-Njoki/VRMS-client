@@ -2,3 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+    font-family: 'Inter', sans-serif;
+  }
+  
+input {
+    background-color: #f1f5f9; /* Tailwind gray-100 */
+  }
