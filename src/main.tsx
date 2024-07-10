@@ -7,9 +7,10 @@ import Home from './pages/Home.tsx';
 import Register from './components/auth/Register.tsx';
 import NotFound from './pages/NotFound.tsx';
 import Contact from './components/adminDashboard/Contact.tsx';
+import AdminDashboard from './components/adminDashboard/AdminDashboard.tsx';
 import About from './pages/About.tsx';
-import Login from './components/auth/Login.tsx';
 import Dashboard from './pages/Dashboard.tsx';
+import Login from './components/auth/Login.tsx';
 import AccountSettings from './components/customerDashboard/AccountSettings.tsx';
 import CurrentBookings from './components/customerDashboard/CurrentBookings.tsx';
 
@@ -43,21 +44,11 @@ const router = createBrowserRouter([
     path: 'dashboard',
     element: <Dashboard />,
     errorElement:<NotFound />
-  },
-  {
-    path: 'account-settings',
-    element: <AccountSettings/>,
-    errorElement:<NotFound />
-  },
-  {
-    path: 'current-bookings',
-    element: <CurrentBookings/>,
-    errorElement:<NotFound />
   }
   // {
   //   path: 'dashboard',
   //   element: <Dashboard />,
-  //   errorElement:<Error/>,
+  //   errorElement:<NotFound/>,
   //   children: [
   //     {
   //       path: "users",

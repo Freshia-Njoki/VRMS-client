@@ -8,9 +8,9 @@ const FeaturedVehicles: React.FC = () => {
   return (
     <div>
      
-      <div className="bg-gray-100 py-6">
+      <div className="bg-gray-100  py-6">
         <div className="container mx-auto text-center">
-          <h2 className="text-4xl font-bold mb-8">Our Features</h2>
+          <h2 className="text-4xl font-bold mb-8" style={{ color: '#456' }}>Our Features</h2>
           <div className="flex flex-wrap justify-center">
             <div className="w-full sm:w-1/2 lg:w-1/3 p-4">
               <div className="bg-white shadow-lg rounded-lg p-6">
@@ -34,8 +34,7 @@ const FeaturedVehicles: React.FC = () => {
         </div>
       </div>
 
-      {/* Featured Vehicles Section */}
-      <div id="featured-vehicles" className="py-16 bg-white">
+      <div id="featured-vehicles" className="py-16 bg-white" style={{ color: '#456' }}>
         <div className="container mx-auto text-center">
           <h2 className="text-4xl font-bold mb-8">Featured Vehicles</h2>
           <div className="flex flex-wrap justify-center">
@@ -71,7 +70,7 @@ const FeaturedVehicles: React.FC = () => {
       </div>
 
       {/* Testimonials Section */}
-      <div className="py-16 bg-gray-100">
+      <div className="py-16 bg-gray-100" style={{ color: '#456' }}>
         <div className="container mx-auto text-center">
           <h2 className="text-4xl font-bold mb-8">What Our Clients Say</h2>
           <div className="flex flex-wrap justify-center">

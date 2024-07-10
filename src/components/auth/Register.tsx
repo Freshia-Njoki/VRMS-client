@@ -1,4 +1,4 @@
-import React from 'react';
+import {Link} from 'react-router-dom'
 
 const Register: React.FC = () => {
   return (
@@ -28,6 +28,27 @@ const Register: React.FC = () => {
               placeholder="Email"
             />
           </div>
+          <div className="mb-4">
+            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="Phone no">
+              Phone Number
+            </label>
+            <input
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              id="Phone no"
+              type="text"
+              placeholder="Phone no"
+            />
+          </div><div className="mb-4">
+            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="addres">
+              Addres
+            </label>
+            <input
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              id="address"
+              type="text"
+              placeholder="Address"
+            />
+          </div>
           <div className="mb-6">
             <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="password">
               Password
@@ -44,7 +65,8 @@ const Register: React.FC = () => {
               className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
               type="button"
             >
-              Register
+               <Link to="/dashboard">Register</Link>
+              
             </button>
             <a className="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800" href="/login">
               Already have an account?

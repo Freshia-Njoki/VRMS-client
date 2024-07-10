@@ -1,4 +1,5 @@
 
+import AdminDashboard from '../components/adminDashboard/AdminDashboard'
 import Footer from '../components/common/Footer'
 import Navbar from '../components/common/Navbar'
 import ContainerWrapper from '../components/ContainerWrapper'
@@ -12,6 +13,7 @@ function Home() {
       <LandingPage />
       <FeaturedVehicles />
       <Footer />
+      {/* <AdminDashboard /> */}
     </ContainerWrapper>
   )
 }

@@ -7,7 +7,7 @@ const About = () => {
   return (
     <div>
         <Navbar />
-  <div className="mx-auto max-w-7xl px-4">
+  <div className="mx-auto max-w-7xl px-4 bg-gray-100">
     <div className="flex flex-col space-y-8 pb-10 pt-12 md:pt-24">
       <div className="max-w-max rounded-full border bg-gray-50 p-1 px-3">
         <p className="text-xs font-semibold leading-normal md:text-sm">

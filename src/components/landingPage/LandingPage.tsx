@@ -4,9 +4,9 @@ function LandingPage() {
   return (
   
     <div>
-      <div className=" flex items-start justify-between py-4 bg-gray-100 px-8">
-        <div className="flex-1 pr-8">
-          <h1 className="text-5xl font-bold mb-4">Welcome to Vehicle Rental Management</h1>
+      <div className="flex items-start justify-between py-4  bg-gray-100 px-8">
+        <div className="flex-1 pr-8 mb-4" style={{ color: '#456' }}>
+          <h1 className="text-5xl font-bold text-black mb-4">Welcome to Vehicle Rental Management</h1>
           <p className="text-lg mb-8">Providing reliable riding since 1992</p>
           <a href="#features" className="bg-gray-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
             Learn More

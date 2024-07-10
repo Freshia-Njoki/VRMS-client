@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Sidebar from 'react-sidebar';
-import Dashboard from '../components/adminDashboard/Dashboard';
+import Dashboard from '../components/adminDashboard/AdminDashboard';
 import ManageVehicles from '../components/adminDashboard/ManageVehicles';
 import ManageUsers from '../components/adminDashboard/ManageUsers';
 import Reports from '../components/adminDashboard/Reports';
