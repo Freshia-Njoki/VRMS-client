@@ -7,6 +7,10 @@ const LocationBranches: React.FC = () => {
     { id: 3, name: 'Item 3', description: 'Description 3', price: '$30.00', RD:'2024-06-30' },
     { id: 4, name: 'Item 4', description: 'Description 4', price: '$40.00', RD:'2024-06-30' },
     { id: 5, name: 'Item 5', description: 'Description 5', price: '$50.00', RD:'2024-06-30' },
+    { id: 6, name: 'Item 5', description: 'Description 5', price: '$50.00', RD:'2024-06-30' },
+    { id: 7, name: 'Item 5', description: 'Description 5', price: '$50.00', RD:'2024-06-30' },
+    { id: 8, name: 'Item 5', description: 'Description 5', price: '$50.00', RD:'2024-06-30' },
+    { id: 9, name: 'Item 5', description: 'Description 5', price: '$50.00', RD:'2024-06-30' },
   ];
   return (
     <div className="p-4">
@@ -14,16 +18,16 @@ const LocationBranches: React.FC = () => {
         <h4 className="text-indigo-700 text-xl font-semibold mr-4">Location and Branches </h4>
         <h4 className="text-stone-400"> | Today</h4>
       </div>
-      <div className="ml-8 bg-gray-50 m-3 p-4">
-      <h2 className="text-2xl font-bold mb-4">Table Example</h2>
+      <div className="ml-8 bg-gray-50 m-3 p-4 text-gray-600">
+      <h2 className="text-2xl font-bold mb-4">Available Locations</h2>
       <div className="overflow-x-auto">
         <table className="min-w-full bg-white border-gray-200 border">
           <thead className="bg-gray-100 border-gray-200 border">
             <tr>
-              <th className="py-2 px-4 border-gray-200 border">ID</th>
-              <th className="py-2 px-4 border-gray-200 border">Name</th>
-              <th className="py-2 px-4 border-gray-200 border">Description</th>
-              <th className="py-2 px-4 border-gray-200 border">Price</th>
+              <th className="py-2 px-4 border-gray-200 border">#</th>
+              <th className="py-2 px-4 border-gray-200 border">Location Name</th>
+              <th className="py-2 px-4 border-gray-200 border">Address</th>
+              <th className="py-2 px-4 border-gray-200 border">Contact</th>
               <th className="py-2 px-4 border-gray-200 border">Return Date</th>
             </tr>
           </thead>

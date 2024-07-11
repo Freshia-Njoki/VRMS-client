@@ -1,3 +1,4 @@
+import { ChevronDown } from 'lucide-react';
 import React, { useState } from 'react';
 
 const Modal = ({ isOpen, onClose }:any) => {
@@ -31,11 +32,11 @@ const ManageVehicles: React.FC = () => {
   const closeModal = () => {
     setIsModalOpen(false);
   };  const tableData = [
-    { id: 1, name: 'Item 1', description: 'Description 1', price: '$10.00' },
-    { id: 2, name: 'Item 2', description: 'Description 2', price: '$20.00' },
-    { id: 3, name: 'Item 3', description: 'Description 3', price: '$30.00' },
-    { id: 4, name: 'Item 4', description: 'Description 4', price: '$40.00' },
-    { id: 5, name: 'Item 5', description: 'Description 5', price: '$50.00' },
+    { id: 1, name: 'Item 1', description: 'auto', price: '10.50' },
+    { id: 2, name: 'Item 2', description: 'auto', price: '20.30' },
+    { id: 3, name: 'Item 3', description: 'manual', price: '30.99' },
+    { id: 4, name: 'Item 4', description: 'manual', price: '40.87' },
+    { id: 5, name: 'Item 5', description: 'auto', price: '50.50' },
   ];
 
   return (
@@ -46,22 +47,26 @@ const ManageVehicles: React.FC = () => {
           <h4 className="text-stone-400"> | Today</h4>
         </div>
         <div>
-          <button className='bg-indigo-800 p-3 rounded-lg m-6' onClick={openModal}>Upload</button>
+          <button className='bg-indigo-800 p-3 rounded-lg m-6' onClick={openModal}>Upload Car</button>
         </div>
       </div>
 
       <Modal isOpen={isModalOpen} onClose={closeModal} />
 
-      <div className="ml-8 bg-gray-50 m-3 p-4">
-      <h2 className="text-2xl font-bold mb-4">Table Example</h2>
+      <div className="ml-8 bg-gray-50 m-3 p-4 text-gray-600">
+        <div className='flex '>
+          <div className='flex mr-8 mt-1'><span><ChevronDown /> </span>  <h2  className='text-gray-500 font-semibold'>15</h2></div>
+          <div><h2 className="text-2xl font-bold mb-4">Entries per page</h2></div>
+        </div>
+      
       <div className="overflow-x-auto">
         <table className="min-w-full bg-white border-gray-200 border">
           <thead className="bg-gray-100 border-gray-200 border">
             <tr>
-              <th className="py-2 px-4 border-gray-200 border">ID</th>
-              <th className="py-2 px-4 border-gray-200 border">Name</th>
-              <th className="py-2 px-4 border-gray-200 border">Description</th>
-              <th className="py-2 px-4 border-gray-200 border">Price</th>
+              <th className="py-2 px-4 border-gray-200 border">#</th>
+              <th className="py-2 px-4 border-gray-200 border">Manufacturer</th>
+              <th className="py-2 px-4 border-gray-200 border">Transmission</th>
+              <th className="py-2 px-4 border-gray-200 border">Rental_rate</th>
               <th className="py-2 px-4 border-gray-200 border">Actions</th>
             </tr>
           </thead>
@@ -73,7 +78,7 @@ const ManageVehicles: React.FC = () => {
                 <td className="py-2 px-4 border-gray-200 border">{item.description}</td>
                 <td className="py-2 px-4 border-gray-200 border">{item.price}</td>
                 <td className="py-2 px-4 border-gray-200 border">
-                  <button className="bg-blue-500 text-white px-3 py-1 rounded mr-2">Edit</button>
+                  <button className="bg-green-500 text-white px-3 py-1 rounded mr-2">Edit</button>
                   <button className="bg-red-500 text-white px-3 py-1 rounded">Delete</button>
                 </td>
               </tr>
