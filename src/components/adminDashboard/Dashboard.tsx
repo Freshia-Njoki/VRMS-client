@@ -1,13 +1,14 @@
 import { CircleDollarSign, ShoppingCart, UsersRound } from "lucide-react"
 import { Pie } from 'react-chartjs-2'
+import { useState } from "react";
 
 const Dashboard = () => {
- 
     const data = {
       labels: ['Dec 24', 'Dec 25', 'Dec 26', 'Dec 27', 'Dec 28', 'Dec 29', 'Dec 30', 'Dec 31'],
       datasets: [
         {
           label: 'Tickets',
+          
           data: [10, 20, 35, 45, 30, 20, 50, 60],
           backgroundColor: [
             'rgba(54, 162, 235, 0.5)',
@@ -33,6 +34,7 @@ const Dashboard = () => {
         },
       ],
     };
+   
   
   return (
     <>
