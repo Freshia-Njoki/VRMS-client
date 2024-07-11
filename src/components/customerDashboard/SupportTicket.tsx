@@ -42,6 +42,7 @@ const SupportTicket = () => {
           <span className="font-bold px-3"> Dec 31</span>
         </div>
       </div>
+      
       <div className="flex justify-between items-center mb-4">
         <div className="bg-white p-6 rounded-lg shadow-lg w-full mr-2">
           <div className="inline-flex py-5 items-center justify-between w-full">
