@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import Sidebar from 'react-sidebar';
-import Dashboard from '../components/adminDashboard/AdminDashboard';
+import Dashboard from './AdminDashboard';
 import ManageVehicles from '../components/adminDashboard/ManageVehicles';
 import ManageUsers from '../components/adminDashboard/ManageUsers';
 import Reports from '../components/adminDashboard/Reports';
 import LocationBranches from '../components/adminDashboard/LocationBranches';
-import SupportTickets from '../components/adminDashboard/SupportTickets';
+import SupportTickets from '../components/adminDashboard/Dashboard';
 import FleetManagement from '../components/adminDashboard/FleetManagement';
 import { Link, Routes, Route, Router } from 'react-router-dom';
 
@@ -53,7 +53,7 @@ const Admin: React.FC = () => {
         <button onClick={() => onSetSidebarOpen(true)}>Open sidebar</button>
       </Sidebar>
       <div className="flex-grow p-4">
-      
+
         <Routes>
           <Route path="dashboard" element={<Dashboard />} />
           <Route path="manage-vehicles" element={<ManageVehicles />} />
@@ -63,8 +63,8 @@ const Admin: React.FC = () => {
           <Route path="support-tickets" element={<SupportTickets />} />
           <Route path="fleet-management" element={<FleetManagement />} />
         </Routes>
-     
-        
+
+
       </div>
     </div>
   );

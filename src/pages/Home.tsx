@@ -1,5 +1,5 @@
 
-import AdminDashboard from '../components/adminDashboard/AdminDashboard'
+import AdminDashboard from './AdminDashboard'
 import Footer from '../components/common/Footer'
 import Navbar from '../components/common/Navbar'
 import ContainerWrapper from '../components/ContainerWrapper'
