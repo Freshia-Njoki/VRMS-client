@@ -31,7 +31,7 @@ function SideNav({onSelect}:any) {
       </li>
      
       <li>
-        <div className="flex items-center gap-2 cursor-pointer font-bold py-5 text-lg"  onClick={() => handleItemClick('locationsBranches')}>
+        <div className="flex items-center gap-2 cursor-pointer font-bold py-5 text-lg"  onClick={() => handleItemClick('locationBranches')}>
         <Locate />
         Locations & Branches
         </div>
@@ -42,14 +42,14 @@ function SideNav({onSelect}:any) {
           <span className="font-bold text-lg"  onClick={() => handleItemClick('fleet-management')}>Fleet Management</span>
         </div>
       </li>
-      <h6>ANALYTICS</h6>
+      <h3 className="p-3">ANALYTICS</h3>
       <li>
         <div className="flex items-center py-5 gap-2">
           <ClipboardMinus />
           <span className="font-bold text-lg"  onClick={() => handleItemClick('reports')}>Reports</span>
         </div>
       </li>
-      <h6>SUPPORT</h6>
+      <h3 className="p-3">SUPPORT</h3>
       <li>
         <div className="flex items-center py-5 gap-2">
           <Ticket />
