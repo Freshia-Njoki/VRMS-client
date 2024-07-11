@@ -1,3 +1,4 @@
+import { ChevronDown } from 'lucide-react';
 import React from 'react';
 
 const ManageUsers: React.FC = () => {
@@ -18,7 +19,11 @@ const ManageUsers: React.FC = () => {
         <h4 className="text-stone-400"> | Today</h4>
       </div>
       <div className="ml-8 bg-gray-50 m-3 p-4 text-gray-600">
-      <h2 className="text-2xl font-bold mb-4">Entries per page</h2>
+      <div className='flex '>
+          <div className='flex mr-8 mt-1'><span><ChevronDown /> </span>  <h2  className='text-gray-500 font-semibold'>15</h2></div>
+          <div><h2 className="text-2xl font-bold mb-4">Entries per page</h2></div>
+          <div className='ml-60 m-4 bg-gray-100 p-2 rounded-lg'><input type="text" className='border border-none cursor-pointer' placeholder='search ...'/></div>
+        </div>
       <div className="overflow-x-auto">
         <table className="min-w-full bg-white border-gray-200 border">
           <thead className="bg-gray-100 border-gray-200 border">
@@ -38,7 +43,7 @@ const ManageUsers: React.FC = () => {
                 <td className="py-2 px-4 border-gray-200 border">{item.email}</td>
                 <td className="py-2 px-4 border-gray-200 border">{item.phone}</td>
                 <td className="py-2 px-4 border-gray-200 border">
-                  <button className="bg-blue-500 text-white px-3 py-1 rounded mr-2">Edit</button>
+                  <button className="bg-green-500 text-white px-3 py-1 rounded mr-2">Edit</button>
                   <button className="bg-red-500 text-white px-3 py-1 rounded">Delete</button>
                 </td>
               </tr>
