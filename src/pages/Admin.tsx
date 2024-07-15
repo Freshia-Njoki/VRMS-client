@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Sidebar from 'react-sidebar';
 import Dashboard from './AdminDashboard';
 import ManageVehicles from '../components/adminDashboard/ManageVehicles';
-import ManageUsers from '../components/adminDashboard/ManageUsers';
+import ManageUsers from '../components/adminDashboard/manageUsers/ManageUsers';
 import Reports from '../components/adminDashboard/Reports';
 import LocationBranches from '../components/adminDashboard/LocationBranches';
 import SupportTickets from '../components/adminDashboard/Dashboard';

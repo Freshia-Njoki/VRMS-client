@@ -1,0 +1,87 @@
+.bg {
+    background-color: #4e4cc4;
+    height: 87vh;
+  }
+  .p-nav {
+    padding-left: 2rem;
+    height: 8vh;
+    background-color: white;
+    display: flex;
+    margin-bottom: 1rem;
+    padding-top: 5px;
+    align-items: center;
+  }
+  .lipa {
+    height: 85vh;
+  }
+  
+  .item-details {
+    display: flex;
+    gap: 20px;
+    padding-bottom: 1rem;
+    flex-direction: row;
+  }
+  .mini-nav {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+    padding-bottom: 0rem;
+  }
+  .shipping-info {
+    background-color: whitesmoke;
+    width: 70%;
+    padding: 0.5rem;
+    padding-left: 2rem;
+    margin-left: 5rem;
+    border-radius: 5px;
+  }
+  .customer-info {
+    padding-top: 0.3rem;
+  
+    display: flex;
+  }
+  
+  .information {
+    display: flex;
+    gap: 2rem;
+    margin-top: 0.5rem;
+  }
+  .edit {
+    display: flex;
+    margin-left: 7rem;
+    flex-direction: row;
+  }
+  
+  .payment {
+    background-color: whitesmoke;
+    width: 70%;
+    padding: 0.6rem;
+    padding-left: 2rem;
+    margin: 1rem 0rem 1rem 5rem;
+    margin-top: 1rem;
+    margin-left: 5rem;
+    margin-bottom: 1rem;
+    border-radius: 5px;
+  }
+  .payment-card {
+    display: flex;
+    gap: 15rem;
+    margin: 0.7rem;
+  }
+  .payment-card2 {
+    display: flex;
+    background-color: white;
+    gap: 42.3rem;
+    margin: 0.5rem;
+  }
+  
+  .payment-footer {
+    display: flex;
+    padding: 0.9rem;
+    margin-bottom: 5px;
+    background-color: white;
+    align-items: center;
+    place-items: center;
+    gap: 60%;
+    padding-left: 3rem;
+  }

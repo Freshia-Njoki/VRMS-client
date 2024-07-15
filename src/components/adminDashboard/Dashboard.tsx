@@ -48,10 +48,8 @@ const Dashboard = () => {
       if (chartInstance) {
         chartInstance.destroy();
       }
-
-      // Create new chart instance
       chartInstance = new Chart("myChart", {
-        type: "pie", // Change this to your chart type
+        type: "pie",
         data: data,
       });
     };
