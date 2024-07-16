@@ -39,9 +39,7 @@ export default function PaymentForm() {
     <>
     {clientSecret && (
         <Elements stripe={stripePromise} options={options}>
-            <Navbar />
             <CheckoutForm />
-            <Footer />
         </Elements>
     )}
     </>

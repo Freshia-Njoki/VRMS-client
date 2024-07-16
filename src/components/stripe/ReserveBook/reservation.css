@@ -17,8 +17,7 @@
   
   .item-details {
     display: flex;
-    gap: 20px;
-    padding-bottom: 1rem;
+    padding-bottom: .8rem;
     flex-direction: row;
   }
   .mini-nav {
