@@ -59,7 +59,6 @@ const ManageUsers = () => {
   const handleSaveEdit = async () => {
   if (editedUser) {
     try {
-      // Filter out null values from editedUser before sending the PUT request
       const filteredEditedUser = Object.fromEntries(
         Object.entries(editedUser).filter(([key, value]) => value !== null)
       );
@@ -149,7 +148,8 @@ const ManageUsers = () => {
                 </tr>
               </thead>
               <tbody>
-                {isLoading ? (
+                {
+                isLoading ? (
                   <tr><td colSpan={5}>Loading...</td></tr>
                 ) : usersData.length === 0 ? (
                   <tr><td colSpan={5}>No Data</td></tr>
