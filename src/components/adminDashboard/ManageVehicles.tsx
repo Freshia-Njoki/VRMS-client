@@ -8,6 +8,7 @@ interface TVehicleSpecs {
   id: number;
   manufacturer: string;
   model: string;
+  year: number
   fuel_type: string;
   transmission: string;
   features: string;
@@ -27,7 +28,7 @@ const Modal = ({ isOpen, onClose, vehicle, onSave }: any) => {
     setFormData((prevData: any) => ({ ...prevData, [name]: value }));
   };
 
-  const handleSave = () => {
+  const handleSave= ():TVehicleSpecs [] => {
     onSave(formData);
     onClose();
   };
@@ -39,7 +40,17 @@ const Modal = ({ isOpen, onClose, vehicle, onSave }: any) => {
     <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-gray-800 bg-opacity-75 z-50">
       <div className="bg-white p-8 rounded-lg shadow-lg">
         <h2 className="text-2xl font-bold mb-4">{vehicle ? 'Edit Vehicle' : 'Upload Vehicle'}</h2>
-        {/* <p className="text-gray-700 mb-4">Add your modal content here.</p> */}
+        
+        <div className="mb-4">
+          <label className="block text-gray-700">vehicle ID</label>
+          <input
+            type="number"
+            name="id"
+            value={formData.id || ''}
+            onChange={handleChange}
+            className="w-full px-3 py-2 border rounded"
+          />
+        </div>
         <div className="mb-4">
           <label className="block text-gray-700">Manufacturer</label>
           <input
@@ -59,12 +70,33 @@ const Modal = ({ isOpen, onClose, vehicle, onSave }: any) => {
             onChange={handleChange}
             className="w-full px-3 py-2 border rounded"
           />
-        </div><div className="mb-4">
+        </div>
+        <div className="mb-4">
+          <label className="block text-gray-700">Year</label>
+          <input
+            type="number"
+            name="year"
+            value={formData.year || ''}
+            onChange={handleChange}
+            className="w-full px-3 py-2 border rounded"
+          />
+        </div>
+        <div className="mb-4">
           <label className="block text-gray-700">Fuel Type</label>
           <input
             type="text"
             name="fuel_type"
             value={formData.fuel_type || ''}
+            onChange={handleChange}
+            className="w-full px-3 py-2 border rounded"
+          />
+        </div>
+        <div className="mb-4">
+          <label className="block text-gray-700">Engine Capacity</label>
+          <input
+            type="text"
+            name="engine_capacity"
+            value={formData.engine_capacity || ''}
             onChange={handleChange}
             className="w-full px-3 py-2 border rounded"
           />
@@ -79,7 +111,17 @@ const Modal = ({ isOpen, onClose, vehicle, onSave }: any) => {
             className="w-full px-3 py-2 border rounded"
           />
         </div>
-        <div className="mb-4">
+        {/* <div className="mb-4">
+          <label className="block text-gray-700">Seating capacity</label>
+          <input
+            type="text"
+            name="seating_capacity"
+            value={formData.seating_capacity || ''}
+            onChange={handleChange}
+            className="w-full px-3 py-2 border rounded"
+          />
+        </div> */}
+        <div className="mb-3">
           <label className="block text-gray-700">Features</label>
           <input
             type="text"
@@ -262,12 +304,12 @@ const ManageVehicles: React.FC = () => {
 };
 
 
-interface ModalProps {
-  isOpen: boolean;
-  onClose: () => void;
-  vehicle: TVehicleSpecs | null;
-  onSave: (vehicle: TVehicleSpecs) => void;
-}
+// interface ModalProps {
+//   isOpen: boolean;
+//   onClose: () => void;
+//   vehicle: TVehicleSpecs | null;
+//   onSave: (vehicle: TVehicleSpecs) => void;
+// }
 
 
 export default ManageVehicles;

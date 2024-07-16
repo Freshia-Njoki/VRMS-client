@@ -20,6 +20,7 @@ import FleetManagement from './components/adminDashboard/FleetManagement.tsx';
 import Reports from './components/adminDashboard/Reports.tsx';
 import CustomerSupport from './components/adminDashboard/CustomerSupport.tsx';
 import Reservation from './components/stripe/ReserveBook/Reservation.tsx';
+import Logout from './components/customerDashboard/Logout.tsx';
 
 
 const App: React.FC = () => {
@@ -53,32 +54,40 @@ const App: React.FC = () => {
       path: 'dashboard',
       element: <Dashboard />,
       errorElement: <NotFound />,
-    },
-    {
-      path: 'support-ticket',
-      element: <SupportTicket />,
-      errorElement: <NotFound />
-    },
-    {
-      path: 'current-bookings',
-      element: <CurrentBookings />,
-      errorElement: <NotFound />
-    },
-    {
-      path: 'booking-history',
-      element: <BookingHistory />,
-      errorElement: <NotFound />
-    },
-    {
-      path: 'my-tickets',
-      element: <MyTickets />,
-      errorElement: <NotFound />
-    },
-    {
-      path: 'new-tickets',
-      element: <NewTickets />,
-      errorElement: <NotFound />
+      children: [
+        {
+          path: '',
+          element: <SupportTicket />,
+          errorElement: <NotFound />
+        },
+        {
+          path: 'current-bookings',
+          element: <CurrentBookings />,
+          errorElement: <NotFound />
+        },
+        {
+          path: 'booking-history',
+          element: <BookingHistory />,
+          errorElement: <NotFound />
+        },
+        {
+          path: 'my-tickets',
+          element: <MyTickets />,
+          errorElement: <NotFound />
+        },
+        {
+          path: 'new-tickets',
+          element: <NewTickets />,
+          errorElement: <NotFound />
+        },
+        {
+          path: 'logout',
+          element: <Logout />,
+          errorElement: <NotFound />
+        }
+      ]
     }
+    
     ,
     {
       path: 'admin-dashboard',
