@@ -87,55 +87,59 @@ const App: React.FC = () => {
         }
       ]
     }
-    
+
     ,
     {
       path: 'admin-dashboard',
       element: <AdminDashboard />,
-      errorElement: <NotFound />
-    },
-    {
-      path: 'dashboard',
-      element: <DashboardAdmin />,
-      errorElement: <NotFound />
-    },
-    {
-      path: 'vehicles',
-      element: <ManageVehicles />,
-      errorElement: <NotFound />
-    },
-    {
-      path: 'users',
-      element: <ManageUsers />,
-      errorElement: <NotFound />
-    },
-    {
-      path: 'locationsBranches',
-      element: <LocationBranches />,
-      errorElement: <NotFound />
-    },
-    {
-      path: 'fleet-management',
-      element: <FleetManagement />,
-      errorElement: <NotFound />
-    },
-    {
-      path: 'reports',
-      element: <Reports />,
-      errorElement: <NotFound />
-    },
-    {
-      path: 'customer-support',
-      element: <CustomerSupport />,
-      errorElement: <NotFound />
+      errorElement: <NotFound />,
+      children: [
+
+        {
+          path: '',
+          element: <DashboardAdmin />,
+          errorElement: <NotFound />
+        },
+        {
+          path: 'vehicles',
+          element: <ManageVehicles />,
+          errorElement: <NotFound />
+        },
+        {
+          path: 'users',
+          element: <ManageUsers />,
+          errorElement: <NotFound />
+        },
+        {
+          path: 'locations-branches',
+          element: <LocationBranches />,
+          errorElement: <NotFound />
+        },
+        {
+          path: 'fleet-management',
+          element: <FleetManagement />,
+          errorElement: <NotFound />
+        },
+        {
+          path: 'reports',
+          element: <Reports />,
+          errorElement: <NotFound />
+        },
+        {
+          path: 'customer-support',
+          element: <CustomerSupport />,
+          errorElement: <NotFound />
+        }
+
+      ]
     },
     {
       path: 'reservation',
       element: <Reservation />,
       errorElement: <NotFound />
     }
-    
-  
+
+
   ]);
   return (
     <RouterProvider router={router}></RouterProvider>

@@ -1,59 +1,55 @@
 import { Ticket, Car, LayoutDashboard, UsersRound, Locate, PencilRuler, ClipboardMinus } from "lucide-react";
+import { Link } from "react-router-dom";
 
 
-function SideNav({onSelect}:any) {
-  const handleItemClick = (item:string) => {
-    onSelect(item);
-  };
-
-
+function SideNav() {
   return (
     <ul className="menu bg-gray-800 min-w-full gap-2 text-base-content min-h-full text-white p-4">
       <h3>MANAGEMENT</h3>
       <li>
         <div className="flex items-center gap-2">
           <LayoutDashboard />
-          <span className="font-bold text-lg cursor-pointer py-5" onClick={() => handleItemClick('dashboard')}>Dashboard</span>
+          <Link to ="" className="font-bold text-lg cursor-pointer py-5">Dashboard</Link>
         </div>
       </li>
       <li>
         <div className="flex items-center gap-2">
         <Car />
-          <span className="flex items-center gap-2 font-bold text-lg cursor-pointer  py-5" onClick={() => handleItemClick('vehicles')}>Vehicles</span>
+          <Link to="vehicles" className="flex items-center gap-2 font-bold text-lg cursor-pointer  py-5">Vehicles</Link>
         </div>
       </li>
       
       <li>
         <div className="flex gap-2 items-center cursor-pointer py-5">
           <UsersRound />
-          <span className="font-bold text-lg"  onClick={() => handleItemClick('users')}>Users</span>
+          <Link to="users" className="font-bold text-lg">Users</Link>
         </div>
       </li>
      
       <li>
-        <div className="flex items-center gap-2 cursor-pointer font-bold py-5 text-lg"  onClick={() => handleItemClick('locationBranches')}>
+        <div className="flex items-center gap-2 cursor-pointer font-bold py-5 text-lg">
         <Locate />
-        Locations & Branches
+        <Link to="locations-branches">Locations & Branches</Link>
         </div>
       </li>
       <li>
         <div className="flex items-center py-5 gap-2">
           <PencilRuler />
-          <span className="font-bold text-lg"  onClick={() => handleItemClick('fleet-management')}>Fleet Management</span>
+          <Link to="fleet-management" className="font-bold text-lg">Fleet Management</Link>
         </div>
       </li>
       <h3 className="p-3">ANALYTICS</h3>
       <li>
         <div className="flex items-center py-5 gap-2">
           <ClipboardMinus />
-          <span className="font-bold text-lg"  onClick={() => handleItemClick('reports')}>Reports</span>
+          <Link to="reports" className="font-bold text-lg" >Reports</Link>
         </div>
       </li>
       <h3 className="p-3">SUPPORT</h3>
       <li>
         <div className="flex items-center py-5 gap-2">
           <Ticket />
-          <span className="font-bold text-lg"  onClick={() => handleItemClick('customer-support')}>Customer Support</span>
+          <Link to="customer-support" className="font-bold text-lg">Customer Support</Link>
         </div>
       </li>
     </ul>
