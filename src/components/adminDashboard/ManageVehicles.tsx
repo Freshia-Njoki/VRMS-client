@@ -8,7 +8,8 @@ interface TVehicleSpecs {
   id: number;
   manufacturer: string;
   model: string;
-  year: number
+  year: number;
+  engine_capacity: string;
   fuel_type: string;
   transmission: string;
   features: string;
@@ -17,28 +18,47 @@ interface TVehicleSpecs {
 const Modal = ({ isOpen, onClose, vehicle, onSave }: any) => {
   if (!isOpen) return null;
 
-  const [formData, setFormData] = useState(vehicle || {});
+  
+  const [formData, setFormData] = useState<TVehicleSpecs>(vehicle || {
+    id: 0,
+    manufacturer: '',
+    model: '',
+    year: 0,
+    fuel_type: '',
+    engine_capacity: '',
+    transmission: '',
+    features: '',
+  });
 
   useEffect(() => {
-    setFormData(vehicle || {});
+    setFormData(vehicle || {
+      id: 0,
+      manufacturer: '',
+      model: '',
+      year: 0,
+      fuel_type: '',
+      engine_capacity: '',
+      transmission: '',
+      features: '',
+    });
   }, [vehicle]);
 
-  const handleChange = (e: any) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormData((prevData: any) => ({ ...prevData, [name]: value }));
   };
 
-  const handleSave= ():TVehicleSpecs [] => {
+  const handleSave= ()=> {
     onSave(formData);
     onClose();
   };
 
-  if (!isOpen) return null;
+  // if (!isOpen) return null;
 
 
   return (
-    <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-gray-800 bg-opacity-75 z-50">
-      <div className="bg-white p-8 rounded-lg shadow-lg">
+    <div className="relative top-3 bottom-2 left-0 w-full max-h-14 flex items-center justify-center bg-gray-800 bg-opacity-75 z-50">
+      <div className="bg-white p-8 rounded-lg shadow-lg text-black">
         <h2 className="text-2xl font-bold mb-4">{vehicle ? 'Edit Vehicle' : 'Upload Vehicle'}</h2>
         
         <div className="mb-4">
@@ -46,7 +66,7 @@ const Modal = ({ isOpen, onClose, vehicle, onSave }: any) => {
           <input
             type="number"
             name="id"
-            value={formData.id || ''}
+            value={formData.id}
             onChange={handleChange}
             className="w-full px-3 py-2 border rounded"
           />
@@ -56,7 +76,7 @@ const Modal = ({ isOpen, onClose, vehicle, onSave }: any) => {
           <input
             type="text"
             name="manufacturer"
-            value={formData.manufacturer || ''}
+            value={formData.manufacturer}
             onChange={handleChange}
             className="w-full px-3 py-2 border rounded"
           />
@@ -66,7 +86,7 @@ const Modal = ({ isOpen, onClose, vehicle, onSave }: any) => {
           <input
             type="text"
             name="model"
-            value={formData.model || ''}
+            value={formData.model}
             onChange={handleChange}
             className="w-full px-3 py-2 border rounded"
           />
@@ -76,7 +96,7 @@ const Modal = ({ isOpen, onClose, vehicle, onSave }: any) => {
           <input
             type="number"
             name="year"
-            value={formData.year || ''}
+            value={formData.year}
             onChange={handleChange}
             className="w-full px-3 py-2 border rounded"
           />
@@ -86,7 +106,7 @@ const Modal = ({ isOpen, onClose, vehicle, onSave }: any) => {
           <input
             type="text"
             name="fuel_type"
-            value={formData.fuel_type || ''}
+            value={formData.fuel_type}
             onChange={handleChange}
             className="w-full px-3 py-2 border rounded"
           />
@@ -96,7 +116,7 @@ const Modal = ({ isOpen, onClose, vehicle, onSave }: any) => {
           <input
             type="text"
             name="engine_capacity"
-            value={formData.engine_capacity || ''}
+            value={formData.engine_capacity}
             onChange={handleChange}
             className="w-full px-3 py-2 border rounded"
           />
@@ -106,7 +126,7 @@ const Modal = ({ isOpen, onClose, vehicle, onSave }: any) => {
           <input
             type="text"
             name="transmission"
-            value={formData.transmission || ''}
+            value={formData.transmission}
             onChange={handleChange}
             className="w-full px-3 py-2 border rounded"
           />
@@ -126,7 +146,7 @@ const Modal = ({ isOpen, onClose, vehicle, onSave }: any) => {
           <input
             type="text"
             name="features"
-            value={formData.features || ''}
+            value={formData.features}
             onChange={handleChange}
             className="w-full px-3 py-2 border rounded"
           />
@@ -165,7 +185,9 @@ const ManageVehicles: React.FC = () => {
       } catch (error) {
         console.error('Error fetching vehicles data:', error);
       } 
-      setLoading(false);
+      finally {
+        setLoading(false);
+      }
       
     };
 
@@ -189,11 +211,15 @@ const ManageVehicles: React.FC = () => {
         if (response.status === 200) {
           setVehiclesData(vehiclesData.map(v => (v.id === vehicle.id ? vehicle : v)));
           toast.success(`Vehicle with ID ${vehicle.id} updated successfully.`);
+          closeModal();
+          fetchVehicles();
         }
       } else {
         const response = await Axios.post(`${apiDomain}/vehicleSpecs`, vehicle);
         setVehiclesData([...vehiclesData, response.data]);
         toast.success(`Vehicle added successfully.`);
+        closeModal();
+        fetchVehicles()
       }
     } catch (error) {
       toast.error(`Error saving vehicle: ${(error as Error).message}`);
@@ -304,12 +330,8 @@ const ManageVehicles: React.FC = () => {
 };
 
 
-// interface ModalProps {
-//   isOpen: boolean;
-//   onClose: () => void;
-//   vehicle: TVehicleSpecs | null;
-//   onSave: (vehicle: TVehicleSpecs) => void;
-// }
-
-
 export default ManageVehicles;
+function fetchVehicles() {
+  throw new Error('Function not implemented.');
+}
+

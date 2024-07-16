@@ -21,6 +21,7 @@ import Reports from './components/adminDashboard/Reports.tsx';
 import CustomerSupport from './components/adminDashboard/CustomerSupport.tsx';
 import Reservation from './components/stripe/ReserveBook/Reservation.tsx';
 import Logout from './components/customerDashboard/Logout.tsx';
+import Completion from './components/stripe/Completion.tsx';
 
 
 const App: React.FC = () => {
@@ -86,9 +87,7 @@ const App: React.FC = () => {
           errorElement: <NotFound />
         }
       ]
-    }
-
-    ,
+    },
     {
       path: 'admin-dashboard',
       element: <AdminDashboard />,
@@ -136,6 +135,10 @@ const App: React.FC = () => {
     {
       path: 'reservation',
       element: <Reservation />,
+      errorElement: <NotFound />
+    },{
+      path: 'completion',
+      element: <Completion />,
       errorElement: <NotFound />
     }
 
