@@ -22,6 +22,7 @@ import CustomerSupport from './components/adminDashboard/CustomerSupport.tsx';
 import Reservation from './components/stripe/ReserveBook/Reservation.tsx';
 import Logout from './components/customerDashboard/Logout.tsx';
 import Completion from './components/stripe/Completion.tsx';
+import { Toaster } from 'sonner';
 
 
 const App: React.FC = () => {
@@ -64,7 +65,15 @@ const App: React.FC = () => {
         {
           path: 'current-bookings',
           element: <CurrentBookings />,
-          errorElement: <NotFound />
+          errorElement: <NotFound />,
+          children : [
+            
+              {
+                path: 'reservation',
+                element: <Reservation />,
+                errorElement: <NotFound />
+              }
+          ]
         },
         {
           path: 'booking-history',
@@ -133,10 +142,6 @@ const App: React.FC = () => {
       ]
     },
     {
-      path: 'reservation',
-      element: <Reservation />,
-      errorElement: <NotFound />
-    },{
       path: 'completion',
       element: <Completion />,
       errorElement: <NotFound />
@@ -144,9 +149,23 @@ const App: React.FC = () => {
 
 
   ]);
+  
   return (
-    <RouterProvider router={router}></RouterProvider>
+    <>
+      <RouterProvider router={router} />
+      <Toaster
+        position='top-right'
+        toastOptions={{
+          classNames: {
+            error: 'bg-red-400',
+            success: 'text-green-400',
+            warning: 'text-yellow-400',
+            info: 'bg-blue-400',
+          }
+        }}
+      />
+    </>
   )
-};
+}
 
 export default App;

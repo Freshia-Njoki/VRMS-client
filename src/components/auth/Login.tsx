@@ -1,7 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { toast } from "sonner";
+
 
 const Login: React.FC = () => {
+  const handleLogin = () => {
+    toast.success('Login successful!');
+  }
   return (
     <div className="flex justify-center items-center min-h-screen bg-gray-100">
       <div className="w-full max-w-md bg-white shadow-md rounded px-8 py-6">
@@ -33,6 +38,7 @@ const Login: React.FC = () => {
             <button
               className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
               type="button" 
+              onClick={handleLogin}
             >
               <Link to="/dashboard">Sign In</Link>
               
