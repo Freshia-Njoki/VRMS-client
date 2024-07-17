@@ -16,11 +16,12 @@ function MyTickets() {
   const [isError, setIsError] = useState(false);
   const [tickets, setTickets] = useState<TCustomerSupport[]>([]);
 
-  const statusColors: { [key: string]: string }[] = [
-    { 'cancelled': 'bg-yellow-200' },
-    { 'completed': 'bg-blue-200' },
-    { 'active': 'bg-green-200' }
-  ];
+  const statusColors: { [key: string]: string } = {
+    'cancelled': 'bg-yellow-200',
+    'completed': 'bg-blue-200',
+    'active': 'bg-green-200',
+    'open': 'bg-sky-400',
+  };
 
 
   useEffect(() => {
@@ -87,7 +88,7 @@ function MyTickets() {
                 
               </div>
               <div className="flex gap-1 items-center mx-2">
-                <p className={`text-green-700 font-semibold rounded shadow-md p-2 ml-4 ${statusColors[index % statusColors.length][ticket.status]}`}>status: {ticket.status}</p>
+                <p key={index} className={`border p-4 mr-3 rounded-lg text-black shadow-md mt-3 ${statusColors[ticket.status]}`}>status: {ticket.status}</p>
                 </div>
 
               
