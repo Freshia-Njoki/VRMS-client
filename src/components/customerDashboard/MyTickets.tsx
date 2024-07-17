@@ -1,17 +1,52 @@
+import { useEffect, useState } from "react";
+import Axios from 'axios';
+import { apiDomain } from "../../utils/utils";
+import { toast } from 'sonner';
 
-
-  const tickets = [
-    {  subject: 'Ticket Subject', Desc: 'Amet minim mollit non deserunt non deserunt', status: 'active'},
-    {  subject: 'Ticket Subject', Desc: 'Amet minim mollit non deserunt non deserunt', status: 'completed'},
-    {  subject: 'Ticket Subject', Desc: 'Amet minim mollit non deserunt non deserunt', status: 'cancelled'},
-    {  subject: 'Ticket Subject', Desc: 'Amet minim mollit non deserunt non deserunt', status: 'in-progress'},
-    {  subject: 'Ticket Subject', Desc: 'Amet minim mollit non deserunt non deserunt', status: 'in-progress'},
-    {  subject: 'Ticket Subject', Desc: 'Amet minim mollit non deserunt non deserunt', status: 'in-progress'},
-    {  subject: 'Ticket Subject', Desc: 'Amet minim mollit non deserunt non deserunt', status: 'in-progress'},
-    {  subject: 'Ticket Subject', Desc: 'Amet minim mollit non deserunt non deserunt', status: 'in-progress'},
-  ];
+interface TCustomerSupport {
+  subject: string;
+  description: string;
+  status: string;
+  created_at: string;
+}
 
 function MyTickets() {
+
+  const [isLoading, setIsLoading] = useState(true);
+  const [isError, setIsError] = useState(false);
+  const [tickets, setTickets] = useState<TCustomerSupport[]>([]);
+
+  const statusColors: { [key: string]: string }[] = [
+    { 'cancelled': 'bg-yellow-200' },
+    { 'completed': 'bg-blue-200' },
+    { 'active': 'bg-green-200' }
+  ];
+
+
+  useEffect(() => {
+    const fetchCustomerSupportTickets = async () => {
+      setIsLoading(true);
+      setIsError(false);
+      try {
+        const response = await Axios.get(`${apiDomain}/customerSupportTickets`);
+        const { data } = response;
+        setTickets(data);
+      } catch (error) {
+        console.error('Error fetching customer support data', error);
+        setIsError(true);
+      }
+      setIsLoading(false);
+    };
+    fetchCustomerSupportTickets();
+  }, []);
+
+  if (isLoading) {
+    return toast.success('Loading data ...');
+  }
+
+  if (isError) {
+    return <div>Error loading data...</div>;
+  }
   return (
     <div className="py-6 rounded-lg bg-gray-100 max-w-9xl">
       <div className="flex gap-2 items-center mb-4">
@@ -19,7 +54,11 @@ function MyTickets() {
           <h4 className="text-stone-400">| Today</h4>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3">
-          {tickets.map((ticket, index) => (
+          {
+             isLoading ? (
+              toast.success('Loading data...')
+            ) : (
+          tickets.map((ticket, index) => (
             <div key={index} className="border p-4 mr-3 rounded-lg bg-white shadow-md mt-3">
               <div className="inline-flex py-5 items-center justify-between w-full">
             <h2 className="text-2xl text-gray-600 font-bold"><svg width="38" height="35" viewBox="0 0 38 35" fill="none" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
@@ -42,13 +81,13 @@ function MyTickets() {
               <div className="mb-3">
                   <p className="text-black font-semibold ml-7">{ticket.subject}</p>
                 <div className="items-center bg-gray-100 rounded shadow-md p-2 m-3">
-                  <p  className="text-gray-400">{ticket.Desc}</p>
+                  <p  className="text-gray-400">{ticket.description}</p>
                 </div>
                
                 
               </div>
               <div className="flex gap-1 items-center mx-2">
-                <p className="text-green-700 font-semibold bg-green-100 rounded shadow-md p-2 ml-4">status: {ticket.status}</p>
+                <p className={`text-green-700 font-semibold rounded shadow-md p-2 ml-4 ${statusColors[index % statusColors.length][ticket.status]}`}>status: {ticket.status}</p>
                 </div>
 
               
@@ -59,7 +98,8 @@ function MyTickets() {
                 
               
             </div>
-          ))}
+          ))
+        )}
         </div>
     </div>
   )
