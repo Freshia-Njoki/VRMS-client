@@ -227,17 +227,17 @@ const ManageVehicles: React.FC = () => {
   };
 
   const handleDelete = async (id: number) => {
-    try {
-      const response = await Axios.delete(`${apiDomain}/vehicleSpecs/${id}`);
-      if (response.status === 200) {
+    // try {
+       await Axios.delete(`${apiDomain}/vehicleSpecs/${id}`);
+      // if (response.status === 200) {
         setVehiclesData(vehiclesData.filter(vehicle => vehicle.id !== id));
         toast.success(`Vehicle with ID ${id} deleted successfully.`);
-      } else {
-        toast.error(`Failed to delete vehicle with ID ${id}.`)
-      }
-    } catch (error) {
-      toast.error(`Error deleting vehicle with ID ${id}: ${(error as Error).message}`);
-    }
+      // } else {
+    //     toast.error(`Failed to delete vehicle with ID ${id}.`)
+    //   }
+    // } catch (error) {
+    //   toast.error(`Error deleting vehicle with ID ${id}: ${(error as Error).message}`);
+    // }
   };
   const handleEdit = (vehicle: TVehicleSpecs) => {
     setEditedVehicle(vehicle);
@@ -254,7 +254,7 @@ const ManageVehicles: React.FC = () => {
 
   return (
     <>
-    <Toaster
+    {/* <Toaster
         toastOptions={{
           classNames: {
             error: 'bg-red-400',
@@ -263,7 +263,7 @@ const ManageVehicles: React.FC = () => {
             info: 'bg-blue-400',
           },
         }}
-      />
+      /> */}
       <div className="ml-8 bg-gray-50 m-3 p-4">
         <div className="items-center flex">
           <h4 className="text-indigo-700 text-xl font-semibold mr-4">Vehicles</h4>

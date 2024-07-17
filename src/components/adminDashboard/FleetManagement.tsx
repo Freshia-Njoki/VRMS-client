@@ -14,7 +14,7 @@ interface TFleetManagement{
 function FleetManagement() {
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
-  const [fleetManagementData, setTFleetManagementData] = useState<TFleetManagement[]>([])
+  const [fleetManagementData, setFleetManagementData] = useState<TFleetManagement[]>([])
   const [checkedRows, setCheckedRows] = useState<number[]>([]);
 
   useEffect(() => {
@@ -24,7 +24,7 @@ function FleetManagement() {
       try {
         const response = await Axios.get(`${apiDomain}/fleet`)
         const { data } = response;
-        setTFleetManagementData(data);
+        setFleetManagementData(data);
       } catch (error) {
         console.error('Error fetching fleet data', error);
         setIsError(true)
