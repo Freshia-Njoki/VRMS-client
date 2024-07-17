@@ -68,7 +68,7 @@ const LocationBranches: React.FC = () => {
               ) : (
                 locationBranchData.map((LocationBranch) => (
               <tr key={LocationBranch.id}>
-                <td className="py-2 px-4 border-gray-200 border">{LocationBranch.id}</td>
+                <td className="py-2 px-4 font-bold border-gray-200 border">{LocationBranch.id}</td>
                 <td className="py-2 px-4 border-gray-200 border">{LocationBranch.name}</td>
                 <td className="py-2 px-4 border-gray-200 border">{LocationBranch.address}</td>
                 <td className="py-2 px-4 border-gray-200 border">{LocationBranch.contact_phone}</td>
