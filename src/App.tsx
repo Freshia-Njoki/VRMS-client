@@ -66,14 +66,6 @@ const App: React.FC = () => {
           path: 'current-bookings',
           element: <CurrentBookings />,
           errorElement: <NotFound />,
-          children : [
-            
-              {
-                path: 'reservation',
-                element: <Reservation />,
-                errorElement: <NotFound />
-              }
-          ]
         },
         {
           path: 'booking-history',
@@ -97,6 +89,7 @@ const App: React.FC = () => {
         }
       ]
     },
+
     {
       path: 'admin-dashboard',
       element: <AdminDashboard />,
@@ -142,6 +135,11 @@ const App: React.FC = () => {
       ]
     },
     {
+      path: 'reservation',
+      element: <Reservation />,
+      errorElement: <NotFound />
+    },
+    {
       path: 'completion',
       element: <Completion />,
       errorElement: <NotFound />
@@ -149,7 +147,7 @@ const App: React.FC = () => {
 
 
   ]);
-  
+
   return (
     <>
       <RouterProvider router={router} />

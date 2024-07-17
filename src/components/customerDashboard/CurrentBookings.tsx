@@ -1,6 +1,6 @@
 import Axios from 'axios';
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { useNavigate  } from "react-router-dom";
 import {toast} from 'sonner'
 import { apiDomain } from "../../utils/utils";
 
@@ -9,9 +9,9 @@ const CurrentBookings = () => {
   const [contact, setContact] = useState('');
   const [vehicleId, setVehicleId] = useState('');
   const [amount, setAmount] = useState('');
-  const [status, setStatus] = useState('');
   const [vehicles, setVehicles] = useState([]);
   const [bookingStatus, setBookingStatus] = useState("");
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchVehicles = async () => {
@@ -33,11 +33,8 @@ const CurrentBookings = () => {
       contact: contact,
       vehicle_id: parseInt(vehicleId),
       total_amount: parseFloat(amount),
-      booking_status: status
+      booking_status: bookingStatus
     };
-
-   
-  
 
     try {
       const response = await Axios.post(`${apiDomain}/booking`, bookingData, {
@@ -51,15 +48,17 @@ const CurrentBookings = () => {
       setContact('');
       setVehicleId('');
       setAmount('');
-      setStatus('');
+      setBookingStatus('');
+
+      navigate("/reservation");
     } catch (error) {
       toast.error('Failed to make booking');
       console.error('Error:', error);
     }
   };
-  // const handleVehicleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-  //   setSelectedVehicleId(e.target.value);
-  // };
+  const handleStatusChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setBookingStatus(e.target.value);
+  };
   return (
     <div className="m-6 p-6 text-black bg-white rounded-lg shadow-md max-w-7xl">
        <div className='inline-flex py-7'>
@@ -90,7 +89,22 @@ const CurrentBookings = () => {
       </div>
       <div className="mb-4">
         <label className="block text-gray-700">Booking Status</label>
-        <input type="text" className="text-black w-full p-2 border border-gray-300 rounded mt-1" value={status} onChange={(e) => setStatus(e.target.value)} placeholder="Enter the booking status" />
+        <select
+        id="bookingStatus"
+        className="w-full p-2 border bg-gray-300 rounded mt-1"
+        value={bookingStatus}
+        onChange={handleStatusChange}
+      >
+        <option value="">Select Booking Status</option>
+        <option value="Confirmed">Confirmed</option>
+        <option value="Pending">Pending</option>
+        <option value="Cancelled">Cancelled</option>
+        <option value="Completed">Completed</option>
+        <option value="Rejected">Rejected</option>
+        <option value="On Hold">On Hold</option>
+        <option value="Arrived">Arrived</option>
+        <option value="No Show">No Show</option>
+      </select>
       </div>
       {/* <div className="mb-4">
         <label className="block text-gray-700">Location Name</label>
