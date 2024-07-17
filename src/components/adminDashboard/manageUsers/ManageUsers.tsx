@@ -1,9 +1,9 @@
 import { ChevronDown } from 'lucide-react';
 import { TUser } from './ManageUsersAPI';
 import Axios from 'axios';
-import { Toaster, toast } from 'sonner';
 import { useState, useEffect } from 'react';
 import { apiDomain } from "../../../utils/utils";
+import { toast } from 'sonner';
 
 const ManageUsers = () => {
   const [usersData, setUsersData] = useState<TUser[]>([]);
@@ -106,16 +106,6 @@ const ManageUsers = () => {
 
   return (
     <>
-      <Toaster
-        toastOptions={{
-          classNames: {
-            error: 'bg-red-400',
-            success: 'text-green-400',
-            warning: 'text-yellow-400',
-            info: 'bg-blue-400',
-          },
-        }}
-      />
       <div className="p-4">
         <div className="items-center flex ml-8 bg-gray-50 m-3 p-4">
           <h4 className="text-indigo-700 text-xl font-semibold mr-4">Users</h4>

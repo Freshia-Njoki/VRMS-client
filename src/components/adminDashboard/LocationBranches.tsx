@@ -1,17 +1,45 @@
-import React from 'react';
+import Axios from 'axios';
+import { useEffect, useState } from 'react';
+import { apiDomain } from '../../utils/utils';
 
+interface TLocationBranch {
+  id: number;
+  name: string;
+  address: string;
+  contact_phone: string;
+  updated_at: string
+}
 const LocationBranches: React.FC = () => {
-  const tableData = [
-    { id: 1, name: 'Item 1', description: 'Description 1', price: '$10.00', RD:'2024-06-30'},
-    { id: 2, name: 'Item 2', description: 'Description 2', price: '$20.00', RD:'2024-06-30' },
-    { id: 3, name: 'Item 3', description: 'Description 3', price: '$30.00', RD:'2024-06-30' },
-    { id: 4, name: 'Item 4', description: 'Description 4', price: '$40.00', RD:'2024-06-30' },
-    { id: 5, name: 'Item 5', description: 'Description 5', price: '$50.00', RD:'2024-06-30' },
-    { id: 6, name: 'Item 5', description: 'Description 5', price: '$50.00', RD:'2024-06-30' },
-    { id: 7, name: 'Item 5', description: 'Description 5', price: '$50.00', RD:'2024-06-30' },
-    { id: 8, name: 'Item 5', description: 'Description 5', price: '$50.00', RD:'2024-06-30' },
-    { id: 9, name: 'Item 5', description: 'Description 5', price: '$50.00', RD:'2024-06-30' },
-  ];
+
+  const [isLoading, setIsLoading] = useState(true);
+  const [isError, setIsError] = useState(false);
+  const [locationBranchData, setLocationBranchData] = useState<TLocationBranch[]>([])
+  useEffect(() => {
+    const fetchLocation = async () => {
+      setIsLoading(true);
+      setIsError(false);
+      try {
+        const response = await Axios.get(`${apiDomain}/locationBranch`)
+        const { data } = response;
+        console.log(data);
+        setLocationBranchData(data);
+      } catch (error) {
+        console.error('Error fetching location and branch data', error);
+        setIsError(true)
+      }
+      setIsLoading(false)
+    };
+    fetchLocation();
+  }, [])
+ 
+   const formatDate = (isoDate: string) => {
+    const date = new Date(isoDate);
+    return date.toLocaleDateString('en-US', {
+      year: 'numeric',
+      month: 'short',
+      day: 'numeric',
+    });
+  };
   return (
     <div className="p-4">
      <div className="items-center flex ml-8 bg-gray-50 m-3 p-4">
@@ -32,15 +60,22 @@ const LocationBranches: React.FC = () => {
             </tr>
           </thead>
           <tbody>
-            {tableData.map((item) => (
-              <tr key={item.id}>
-                <td className="py-2 px-4 border-gray-200 border">{item.id}</td>
-                <td className="py-2 px-4 border-gray-200 border">{item.name}</td>
-                <td className="py-2 px-4 border-gray-200 border">{item.description}</td>
-                <td className="py-2 px-4 border-gray-200 border">{item.price}</td>
-                <td className="py-2 px-4 border-gray-200 border">{item.RD}</td>
+            {
+              isLoading ? (
+                <tr> <td colSpan={5}>Loading...</td></tr>
+              ) : locationBranchData.length === 0 ?(
+                <tr><td colSpan={5}>No Data</td></tr>
+              ) : (
+                locationBranchData.map((LocationBranch) => (
+              <tr key={LocationBranch.id}>
+                <td className="py-2 px-4 border-gray-200 border">{LocationBranch.id}</td>
+                <td className="py-2 px-4 border-gray-200 border">{LocationBranch.name}</td>
+                <td className="py-2 px-4 border-gray-200 border">{LocationBranch.address}</td>
+                <td className="py-2 px-4 border-gray-200 border">{LocationBranch.contact_phone}</td>
+                <td className="py-2 px-4 border-gray-200 border">{formatDate(LocationBranch.updated_at)}</td>
               </tr>
-            ))}
+            ))
+          )}
           </tbody>
         </table>
       </div>

@@ -334,4 +334,3 @@ export default ManageVehicles;
 function fetchVehicles() {
   throw new Error('Function not implemented.');
 }
-

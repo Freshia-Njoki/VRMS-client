@@ -1,14 +1,71 @@
-import React from 'react'
+import {useEffect, useState } from 'react'
+import Axios from 'axios';
+import { apiDomain } from '../../utils/utils';
+
+interface TFleetManagement{
+  id: number;
+  acquisition_date : string;
+  depreciation_rate: number;
+  maintenance_cost: number;
+  status: string;
+  current_value:number;
+}
 
 function FleetManagement() {
-  const tableData = [
-    { id: 5, acqDate: '2024-06-30', depRate: '0.12', currentVal: '15000.00', maintenanceCost: '200.00', status:'completed' },
-    { id: 5, acqDate: '2024-06-30', depRate: '0.12', currentVal: '15000.00', maintenanceCost: '200.00', status:'Pending' },
-    { id: 5, acqDate: '2024-06-30', depRate: '0.12', currentVal: '15000.00', maintenanceCost: '200.00', status:'completed' },
-    { id: 5, acqDate: '2024-06-30', depRate: '0.12', currentVal: '15000.00', maintenanceCost: '200.00', status:'cancelled' },
-    { id: 5, acqDate: '2024-06-30', depRate: '0.12', currentVal: '15000.00', maintenanceCost: '200.00', status:'Processing' },
-    { id: 5, acqDate: '2024-06-30', depRate: '0.12', currentVal: '15000.00', maintenanceCost: '200.00', status:'completed' }
-  ];
+  const [isLoading, setIsLoading] = useState(true);
+  const [isError, setIsError] = useState(false);
+  const [fleetManagementData, setTFleetManagementData] = useState<TFleetManagement[]>([])
+  const [checkedRows, setCheckedRows] = useState<number[]>([]);
+
+  useEffect(() => {
+    const fetchFleet = async () => {
+      setIsLoading(true);
+      setIsError(false);
+      try {
+        const response = await Axios.get(`${apiDomain}/fleet`)
+        const { data } = response;
+        setTFleetManagementData(data);
+      } catch (error) {
+        console.error('Error fetching fleet data', error);
+        setIsError(true)
+      }
+      setIsLoading(false)
+    };
+    fetchFleet();
+  }, [])
+
+    useEffect(() => {
+      const storedCheckedRows = JSON.parse(localStorage.getItem('checkedRows') || '[]');
+      setCheckedRows(storedCheckedRows);
+    }, []);
+  
+    useEffect(() => {
+      localStorage.setItem('checkedRows', JSON.stringify(checkedRows));
+    }, [checkedRows]);
+  
+  const formatDate = (isoDate: string) => {
+    const date = new Date(isoDate);
+    return date.toLocaleDateString('en-US', {
+      year: 'numeric',
+      month: 'short',
+      day: 'numeric',
+    });
+  };
+  const handleCheckboxChange = (id: number) => {
+    const newCheckedRows = [...checkedRows];
+    const index = newCheckedRows.indexOf(id);
+    if (index === -1) {
+      newCheckedRows.push(id);
+    } else {
+      newCheckedRows.splice(index, 1);
+    }
+    setCheckedRows(newCheckedRows);
+  };
+
+  const isChecked = (id: number) => {
+    return checkedRows.includes(id);
+  };
+
   return (
     <div>
        <div className="items-center flex ml-8 bg-gray-50 m-3 p-4">
@@ -30,18 +87,30 @@ function FleetManagement() {
             </tr>
           </thead>
           <tbody>
-            {tableData.map((item) => (
-              <tr key={item.id}>
-                <td className="py-2 px-4 border-gray-50 text-gray-50 border"><input type="checkbox" name="" id="" /></td>
-                <td className="py-2 px-4 border-gray-200 border">{item.acqDate}</td>
-                <td className="py-2 px-4 border-gray-200 border">{item.depRate}</td>
-                <td className="py-2 px-4 border-gray-200 border">{item.currentVal}</td>
-                <td className="py-2 px-4 border-gray-200 border">{item.maintenanceCost}</td>
+            {
+             isLoading ? (
+              <tr> <td colSpan={5}>Loading...</td></tr>
+            ) : fleetManagementData.length === 0 ?(
+              <tr><td colSpan={5}>No Data</td></tr>
+            ) : (
+            fleetManagementData.map((item) => (
+              <tr key={item.id} className={isChecked(item.id) ? 'line-through' : ''}>
+              <td className="py-2 px-4 border-gray-50 text-gray-50 border">
+                <input
+                  type="checkbox"
+                  checked={isChecked(item.id)}
+                  onChange={() => handleCheckboxChange(item.id)}
+                /></td>
+                <td className="py-2 px-4 border-gray-200 border">{formatDate(item.acquisition_date)}</td>
+                <td className="py-2 px-4 border-gray-200 border">{item.depreciation_rate}</td>
+                <td className="py-2 px-4 border-gray-200 border">{item.current_value}</td>
+                <td className="py-2 px-4 border-gray-200 border">{item.maintenance_cost}</td>
                 <td className="py-2 px-4 border-gray-200 border">
-                  <button className="bg-blue-500 text-white px-3 py-1 rounded mr-2">{item.status}</button>
+                  <button className={`bg-blue-500 text-white px-3 py-1 rounded mr-2 ${isChecked(item.id) ? 'line-through' : ''}`}>{item.status}</button>
                 </td>
               </tr>
-            ))}
+            ))
+          )}
           </tbody>
         </table>
       </div>
