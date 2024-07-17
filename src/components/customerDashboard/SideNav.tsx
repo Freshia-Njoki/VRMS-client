@@ -1,4 +1,4 @@
-import { Ticket, Car, History, BadgePlus, BookCheckIcon } from "lucide-react";
+import { Ticket, Car, History, BadgePlus, BookCheckIcon, LogOut } from "lucide-react";
 import { Link } from "react-router-dom";
 
 function SideNav() {
@@ -13,11 +13,11 @@ function SideNav() {
       </li>
       <li>
         <div className="flex items-center gap-2">
-        <Car />
+          <Car />
           <Link to="current-bookings" className="flex items-center gap-2 font-bold text-lg cursor-pointer  py-5">Current Bookings </Link>
         </div>
       </li>
-      
+
       <li>
         <div className="flex gap-2 items-center cursor-pointer py-5">
           <History />
@@ -27,7 +27,7 @@ function SideNav() {
       <h6>Support</h6>
       <li>
         <div className="flex items-center gap-2 cursor-pointer font-bold py-5 text-lg">
-        <BookCheckIcon />
+          <BookCheckIcon />
           <Link to="my-tickets">My Tickets</Link>
         </div>
       </li>
@@ -38,8 +38,11 @@ function SideNav() {
         </div>
       </li>
       <li>
-                <Link to="logout">Logout</Link>
-            </li>
+        <div className="flex items-center py-5 gap-2">
+          <LogOut />
+          <Link to="logout">Logout</Link>
+        </div>
+      </li>
     </ul>
   );
 }
