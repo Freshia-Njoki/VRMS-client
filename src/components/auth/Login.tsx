@@ -1,10 +1,10 @@
 import { toast } from "sonner";
 import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
-import { authApi } from '../features/Auth/authApi';
-import { setUser } from '../features/Auth/authSlice';
+import { authApi } from '../../features/Auth/authApi';
+import { setUser } from '../../features/Auth/authSlice';
 import { useNavigate } from "react-router-dom"
-import { IUser } from "../features/Auth/authApi"
+import { IUser } from "../../features/Auth/authApi"
 import { Link } from "react-router-dom"
 
 const Login = () => {

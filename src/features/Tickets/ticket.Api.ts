@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { apiDomain } from "../../../utils/utils"
+import { apiDomain } from "../../utils/utils"
 
 export interface ITicket {
   subject: string;

@@ -1,8 +1,8 @@
 import { configureStore, combineReducers } from '@reduxjs/toolkit';
 import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
-import { authApi } from '../components/features/Auth/authApi';
-import { ticketApi } from '../components/features/Tickets/ticket.Api';
+import { authApi } from '../features/Auth/authApi';
+import { ticketApi } from '../features/Tickets/ticket.Api';
 import ManageUsersAPI from '../components/adminDashboard/manageUsers/ManageUsersAPI';
 
 //auth persist config

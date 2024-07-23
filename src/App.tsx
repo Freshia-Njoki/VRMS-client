@@ -12,7 +12,7 @@ import CurrentBookings from './components/customerDashboard/CurrentBookings.tsx'
 import SupportTicket from './components/customerDashboard/SupportTicket.tsx';
 import BookingHistory from './components/customerDashboard/BookingHistory.tsx';
 import MyTickets from './components/customerDashboard/MyTickets.tsx';
-import NewTickets from './components/customerDashboard/NewTickets.tsx';
+import NewTickets from './features/Tickets/NewTickets.jsx';
 import ManageVehicles from './components/adminDashboard/ManageVehicles.tsx';
 import ManageUsers from './components/adminDashboard/manageUsers/ManageUsers.tsx';
 import LocationBranches from './components/adminDashboard/LocationBranches.tsx';
