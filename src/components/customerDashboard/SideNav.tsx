@@ -14,7 +14,7 @@ function SideNav() {
       <li>
         <div className="flex items-center gap-2">
           <Car />
-          <Link to="current-bookings" className="flex items-center gap-2 font-bold text-lg cursor-pointer  py-5">Current Bookings </Link>
+          <Link to="current-bookings" className="flex items-center gap-2 font-bold text-lg cursor-pointer  py-5">Make Bookings </Link>
         </div>
       </li>
 

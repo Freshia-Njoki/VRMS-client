@@ -1,7 +1,45 @@
 import { ChevronDown } from 'lucide-react';
-import React from 'react';
+import React, { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { addTicket as addTicketLocal} from '../features/Tickets/ticketSlice';
+import ticketApi from "../features/Tickets/ticket.Api";
+import {toast} from 'sonner'
+
 
 function NewTickets() {
+  const [subject, setSubject] = useState('');
+  const [status, setStatus] = useState('');
+  const [description, setDescription] = useState('');
+const dispatch = useDispatch();
+const [addTicket, { isLoading, isError, error }] = ticketApi.useAddTicketMutation();
+
+const handleAddTicket = async () => {
+  if (subject.trim() && status.trim() && description.trim())  {
+    try{
+      console.log("Attempting to add ticket...")
+      const newTicket = await addTicket({ subject, status, description }).unwrap();
+      toast.success("Ticket sent👍")
+    dispatch(addTicketLocal(newTicket.subject))
+    dispatch(addTicketLocal(newTicket.status))
+    dispatch(addTicketLocal(newTicket.description))
+    setSubject('');
+    setStatus('');
+    setDescription('');
+
+    } catch(error){
+      console.error("Failed to add the ticket:", error)
+    }
+  } else {
+    console.warn ("text input empty")
+  }
+};
+if (isLoading) {
+  console.log('Adding ticket...');
+}
+
+if (isError) {
+  console.error('Error while adding ticket:', error);
+}
   return (
     <div className="py-6 rounded-lg bg-gray-100 max-w-8xl">
       <div className="flex gap-2 items-center mb-10">
@@ -17,8 +55,10 @@ function NewTickets() {
       </div>
       <div className='border p-4 mr-3 rounded-lg bg-white shadow-md mt-3  ml-9'>
       <div className="flex justify-center">
-      <h3 className="text-4xl font-bold text-gray-400">Ticket Subject</h3>
+        
+      <h3 className="text-4xl font-bold text-gray-400"><input type="text" placeholder="Ticket Subject..." id="" value={subject} onChange={(e) => setSubject(e.target.value)}/></h3>
     </div>
+    
         <div className='border-2 border-gray-200 rounded-lg m-4 '>
          <div className=" flex ">
          <h2 className='text-black m-7'>Details </h2>
@@ -32,11 +72,20 @@ function NewTickets() {
             </div>
             <div className="flex flex-col items-center mx-6">
               <h3 className='mb-2 text-gray-300'>STATUS</h3>
-              <div className='flex items-center shadow-md bg-gray-100 text-sky-500 font-semibold p-4'>
-                <svg width="7" height="7" viewBox="0 0 7 7" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <div className='flex items-center text-sky-500 font-semibold p-4'>
+                {/* <svg width="7" height="7" viewBox="0 0 7 7" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <circle cx="3.35327" cy="3.5" r="3" fill="#38BDF8" />
-                </svg>
-                <h2 className="ml-3 ">Development</h2>
+                </svg> */}
+                <select
+        className="p-2 border rounded mt-1 bg-gray-200 shadow-md" value={status}
+        onChange={(e) => setStatus(e.target.value)}
+      >
+                <option className="ml-3 ">Select Booking Status</option>
+                <option value="open">Urgent</option>
+        <option value="completed">Medium</option>
+        <option value="active">High priority</option>
+        <option value="cancelled">Low</option>
+        </select>
               </div>
             </div>
             <div className="flex flex-col items-center ml-6">
@@ -58,10 +107,16 @@ function NewTickets() {
         </div>
         <div className='m-10'>
         <h3 className='text-black font-semibold'>Description</h3>
-        <div className='mt-5 text-gray-500'>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quas dolores soluta repudiandae iure, odio omnis <br />
-        perferendis? um dolor sit, amet consectetur adipisicing elit. Quas </div>
+        <div className='mt-5 text-gray-500'>
+        <textarea
+              placeholder='Ticket Description...'
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+              className="p-2 border rounded w-full h-28 bg-gray-200"
+            />
+            </div>
         <br />
-        <button className='bg-blue-600 p-3 mt-4 rounded-lg px-5 text-white font-semibold'>+ Add</button>
+        <button className='bg-blue-600 p-3 mt-4 rounded-lg px-5 text-white font-semibold' onClick={handleAddTicket}>+ Add</button>
       </div>
       </div>
       
