@@ -16,7 +16,8 @@ const TicketSlice = createSlice({
     addTicket: (state, action: PayloadAction<string>) => {
       state.tickets.push({
         status: action.payload,
-        description: action.payload
+        description: action.payload,
+        subject: action.payload
       });
     }
   },

@@ -3,7 +3,6 @@ import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import { authApi } from '../features/Auth/authApi';
 import { ticketApi } from '../features/Tickets/ticket.Api';
-import ManageUsersAPI from '../components/adminDashboard/manageUsers/ManageUsersAPI';
 
 //auth persist config
 const persistConfig = {
@@ -15,7 +14,6 @@ const persistConfig = {
 const rootReducer = combineReducers({
   //   todo: todoReducer,
   [authApi.reducerPath]: authApi.reducer,
-  [ManageUsersAPI.reducerPath]: ManageUsersAPI.reducer,
   [ticketApi.reducerPath]: ticketApi.reducer,
 });
 
@@ -26,7 +24,7 @@ const persistedReducer = persistReducer(persistConfig, rootReducer);
 export const store = configureStore({
   reducer: persistedReducer,
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware({ serializableCheck: false }).concat(ManageUsersAPI.middleware).concat(authApi.middleware).concat(ticketApi.middleware),
+    getDefaultMiddleware({ serializableCheck: false }).concat(authApi.middleware).concat(ticketApi.middleware),
 });
 
 export const persistedStore = persistStore(store);

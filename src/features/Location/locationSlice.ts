@@ -1,41 +1,35 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+// import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+// import locationBranchApi, { ILocationBranch } from './location.Api'
+// import { createSelector } from 'reselect';
+// import { RootState } from '../../app/store'
+// interface LocationBranchState {
+//   locationBranch: ILocationBranch[];
+//   loading: boolean;
+//   error: string | null;
+// }
 
-interface Todo {
-  id: number;
-  text: string;
-  completed: boolean;
-}
+// const initialState: LocationBranchState = {
+//   locationBranch: [],
+//   loading: false,
+//   error: null,
+// };
 
-interface TodoState {
-  todos: Todo[];
-}
+// const LocationBranchSlice = createSlice({
+//   name: 'locationBranch',
+//   initialState,
+//   reducers: {
+//     setLocationBranches(state, action: PayloadAction<ILocationBranch[]>) {
+//       state.locationBranch = action.payload;
+//     },
+//   },
+// });
 
-const initialState: TodoState = {
-  todos: [],
-};
+// export const { setLocationBranches } = LocationBranchSlice.actions;
 
-const todoSlice = createSlice({
-  name: 'todo',
-  initialState,
-  reducers: {
-    addTodo: (state, action: PayloadAction<string>) => {
-      state.todos.push({
-        id: Date.now(),
-        text: action.payload,
-        completed: false,
-      });
-    },
-    toggleTodo: (state, action: PayloadAction<number>) => {
-      const todo = state.todos.find((todo) => todo.id === action.payload);
-      if (todo) {
-        todo.completed = !todo.completed;
-      }
-    },
-    deleteTodo: (state, action: PayloadAction<number>) => {
-      state.todos = state.todos.filter((todo) => todo.id !== action.payload);
-    },
-  },
-});
+// const selectLocationBranchState = (state: RootState) => state.locationBranch;
 
-export const { addTodo, toggleTodo, deleteTodo } = todoSlice.actions;
-export default todoSlice.reducer;
+// export const selectLocationBranch = createSelector(
+//   [selectLocationBranchState],
+//   (locationBranchState) => locationBranchState.locationBranch
+// );
+// export default LocationBranchSlice.reducer;

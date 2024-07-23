@@ -1,9 +1,15 @@
 import { ChevronDown } from 'lucide-react';
-import { TUser } from './ManageUsersAPI';
 import Axios from 'axios';
 import { useState, useEffect } from 'react';
 import { apiDomain } from "../../../utils/utils";
 import { toast } from 'sonner';
+
+interface TUser {
+      id: number;
+      full_name: string;
+      email: string;
+      contact_phone: string;
+}
 
 const ManageUsers = () => {
   const [usersData, setUsersData] = useState<TUser[]>([]);

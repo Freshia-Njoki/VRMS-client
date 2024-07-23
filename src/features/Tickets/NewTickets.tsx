@@ -1,8 +1,8 @@
 import { ChevronDown } from 'lucide-react';
-import React, { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { addTicket as addTicketLocal} from '../../features/Tickets/ticketSlice';
-import ticketApi from "../../features/Tickets/ticket.Api";
+import  { useState } from 'react';
+import {  useDispatch } from 'react-redux';
+import { addTicket as addTicketLocal} from './ticketSlice';
+import ticketApi from "./ticket.Api";
 import {toast} from 'sonner'
 
 

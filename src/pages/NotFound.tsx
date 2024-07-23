@@ -1,11 +1,9 @@
-import React from 'react'
-
 import { Link, useRouteError } from "react-router-dom";
 
 import {ArrowLeft} from 'lucide-react'
 
 function NotFound() {
-const error : unknown = useRouteError()
+    const error = useRouteError() as { statusText?: string; message?: string };
 
   return (
     <div className="py-10  bg:base-100">
