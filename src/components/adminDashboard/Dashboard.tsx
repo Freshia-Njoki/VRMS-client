@@ -2,6 +2,10 @@ import { CircleDollarSign, ShoppingCart, UsersRound } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Pie } from 'react-chartjs-2';
 import { Chart } from 'chart.js/auto';
+import { apiDomain } from '../../utils/utils'
+
+
+
 
 const Dashboard = () => {
   const data = {
@@ -65,6 +69,25 @@ const Dashboard = () => {
     };
   }, []);
 
+  const [revenue, setRevenue] = useState<number | null>(null);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    const fetchRevenue = async () => {
+      try {
+        const response = await fetch(`${apiDomain}/revenue/payments`);
+        const data = await response.json();
+        setRevenue(data.revenue);
+      } catch (error) {
+        setError('Failed to fetch revenue');
+        console.error('Error fetching revenue:', error);
+      }
+    };
+
+    fetchRevenue();
+  }, []);
+  
+
   return (
     <>
       <div className="py-6 rounded-lg bg-gray-100 max-w-9xl ml-8">
@@ -108,7 +131,7 @@ const Dashboard = () => {
             <span className="flex">
               <CircleDollarSign className="text-green-700 m-8 h-20 w-20" />
               <div>
-                <h6 className="text-blue-900 mt-10 font-bold" style={{ fontSize: '2.8rem' }}>$3,264</h6>
+                <h6 className="text-blue-900 mt-10 font-bold" style={{ fontSize: '2.8rem' }}>${revenue !== null ? revenue.toLocaleString() : 'Loading...'}</h6>
                 <div className="flex gap-4" style={{ fontSize: '1.2rem' }}>
                   <h2 className="text-green-700 font-bold">8%</h2>
                   <h3 className="text-gray-400">increase</h3>
