@@ -37,6 +37,7 @@ const Navbar: React.FC = () => {
           </ul>
         </div>
         <div className="flex space-x-4">
+          <Link to="/adminLogin" className="text-white">Admin</Link>
           <Link to="/login" className="text-white">Login</Link>
           <Link to="/register" className="text-white">Register</Link>
         </div>

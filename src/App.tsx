@@ -23,6 +23,7 @@ import Reservation from './components/stripe/ReserveBook/Reservation.tsx';
 import Logout from './components/customerDashboard/Logout.tsx';
 import Completion from './components/stripe/Completion.tsx';
 import { Toaster } from 'sonner';
+import AdminLogin from './components/auth/AdminLogin.tsx';
 
 
 const App: React.FC = () => {
@@ -35,6 +36,11 @@ const App: React.FC = () => {
     {
       path: 'register',
       element: <Register />,
+      errorElement: <NotFound />,
+    },
+    {
+      path: 'adminLogin',
+      element: <AdminLogin />,
       errorElement: <NotFound />,
     },
     {
