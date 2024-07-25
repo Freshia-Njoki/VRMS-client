@@ -8,11 +8,11 @@ import { Link } from "react-router-dom";
 const Login = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { register, handleSubmit, formState: { errors } } = useForm<IUser>(
+  // const { register, handleSubmit, formState: { errors } } = useForm<IUser>(
     // {
     //   resolver: yupResolver(schema)
     // }
-  );
+  // );
 
   // const [createUser, { isLoading }] = authApi.useLoginMutation()
 
@@ -53,7 +53,7 @@ const Login = () => {
     <div className="flex justify-center items-center min-h-screen bg-gray-100">
       <div className="w-full max-w-md bg-white shadow-md rounded px-8 py-6">
         <h2 className="text-2xl font-bold text-center mb-4">Login</h2>
-        <form onSubmit={handleSubmit(onSubmit)}>
+        <form>
           <div className="mb-4">
             <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="name">
               Email
@@ -63,9 +63,9 @@ const Login = () => {
               id="name"
               type="text"
               placeholder="email"
-              {...register("email", { required: true })}
+              // {...register("email", { required: true })}
             /> {
-              errors.email && toast.error(errors.email?.message)
+              // errors.email && toast.error(errors.email?.message)
             } 
           </div>
           <div className="mb-6">
@@ -77,7 +77,7 @@ const Login = () => {
               id="password"
               type="password"
               placeholder="Password"
-              {...register("password", { required: true })}
+              // {...register("password", { required: true })}
             />
 
           </div>
