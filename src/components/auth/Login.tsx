@@ -2,9 +2,8 @@ import { toast } from "sonner";
 import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
 // import { authApi } from '../../features/Auth/authApi';
-import { useNavigate } from "react-router-dom"
-import { IUser } from "../../features/Auth/authApi"
-import { Link } from "react-router-dom"
+import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -23,7 +22,7 @@ const Login = () => {
 
   // });
 
-  const onSubmit = async (data: IUser) => {
+  const onSubmit = async () => {
     // try {
     //   const response = await createUser(data).unwrap();
     //   dispatch(setUser(response))

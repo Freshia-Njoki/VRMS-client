@@ -39,7 +39,7 @@ const App: React.FC = () => {
       errorElement: <NotFound />,
     },
     {
-      path: 'adminLogin',
+      path: 'admin-login',
       element: <AdminLogin />,
       errorElement: <NotFound />,
     },

@@ -84,26 +84,22 @@ const CurrentBookings = () => {
         </select>
       </div>
       <div className="mb-4">
-        <label className="block text-gray-700">Total Amount</label>
-        <input type="number" className=" w-full p-2 border border-gray-300 rounded mt-1" value={amount} onChange={(e) => setAmount(e.target.value)} placeholder="Enter the total amount"/>
+        <label className="block text-gray-700">Estate booking fee</label>
+        <input type="number" className=" w-full p-2 border border-gray-300 rounded mt-1" value={amount} onChange={(e) => setAmount(e.target.value)} placeholder="Enter the booking fee"/>
       </div>
       <div className="mb-4">
-        <label className="block text-gray-700">Booking Status</label>
+        <label className="block text-gray-700">Reservation Status</label>
         <select
         id="bookingStatus"
         className="w-full p-2 border bg-gray-300 rounded mt-1"
         value={bookingStatus}
         onChange={handleStatusChange}
       >
-        <option value="">Select Booking Status</option>
-        <option value="Confirmed">Confirmed</option>
-        <option value="Pending">Pending</option>
-        <option value="Cancelled">Cancelled</option>
-        <option value="Completed">Completed</option>
-        <option value="Rejected">Rejected</option>
-        <option value="On Hold">On Hold</option>
-        <option value="Arrived">Arrived</option>
-        <option value="No Show">No Show</option>
+        <option value="">Select Reservation Status</option>
+        <option value="Confirmed">Urgent</option>
+        <option value="Pending">Meduim</option>
+        <option value="Cancelled">High priority</option>
+        <option value="Completed">Later</option>
       </select>
       </div>
       {/* <div className="mb-4">

@@ -3,14 +3,13 @@ import { toast } from "sonner";
 import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from "react-router-dom";
-import { IUser } from "../../features/Auth/authApi";
 
 function AdminLogin() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { register, handleSubmit, formState: { errors } } = useForm<IUser>();
 
-  const onSubmit = async (data: IUser) => {
+  const onSubmit = async () => {
     try {
       // Assuming `createUser` is a function from your API slice
       // const response = await createUser(data).unwrap();
@@ -37,7 +36,7 @@ function AdminLogin() {
   return (
     <div className="flex justify-center items-center min-h-screen bg-gray-100">
       <div className="w-full max-w-md bg-white shadow-md rounded px-8 py-6">
-        <h2 className="text-2xl font-bold text-center mb-4">Login</h2>
+        <h2 className="text-2xl font-bold text-center mb-4">Admin Login</h2>
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="mb-4">
             <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="email">
