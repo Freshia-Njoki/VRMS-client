@@ -1,1 +1,1 @@
-export const apiDomain ="http://localhost:8000/api"
+export const apiDomain ="https://vehicle-rental-ms-api.onrender.com/api"
